@@ -93,7 +93,7 @@ BEGIN
 
             -- Check Client
             IF client_check IS NULL THEN -- Fixed: IN NULL -> IS NULL
-                PERFORM Finance.log_compliance_check(
+                PERFORM Compliance.log_compliance_check(
                     p_clientId, 
                     'Client Rules',  
                     'Client not found!', 
@@ -106,7 +106,7 @@ BEGIN
 
             -- Check Customer
             IF customer_check IS NULL THEN
-                PERFORM Finance.log_compliance_check(
+                PERFORM Compliance.log_compliance_check(
                     p_clientId, 
                     'Customer Rules',  
                     'Customer not found!', 
@@ -130,7 +130,7 @@ BEGIN
             
             -- Amount Check
             IF p_Amount < 0 THEN
-                PERFORM Finance.log_compliance_check(
+                PERFORM Compliance.log_compliance_check(
                     p_clientId, 
                     'Amounts Rule',  
                     'Positive Amount Only!', 
@@ -143,7 +143,7 @@ BEGIN
 
             -- Date Check
             IF p_InvoiceDate > p_DueDate THEN
-                PERFORM Finance.log_compliance_check(
+                PERFORM Compliance.log_compliance_check(
                     p_clientId, 
                     'Dates Rule',  
                     'Due date must be after invoice date', 
@@ -172,7 +172,7 @@ BEGIN
                 WHERE idempotency_key = p_idempotency_key;
                 
                 IF new_transaction_id IS NOT NULL THEN
-                    PERFORM Finance.log_compliance_check(
+                    PERFORM Compliance.log_compliance_check(
                         p_clientId, 
                         'Duplicate Rules',  
                         'Duplicate Transaction Detected', 

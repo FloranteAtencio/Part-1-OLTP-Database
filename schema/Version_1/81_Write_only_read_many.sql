@@ -88,4 +88,40 @@ BEGIN;
 
 COMMIT;
 
+-- ✅ Make audit tables APPEND-ONLY
+ALTER TABLE Audit.audit_logs SET (fillfactor = 100);  -- Never update
+
+-- ✅ Add constraint: no UPDATEs or DELETEs
+CREATE TRIGGER audit_logs_immutable
+BEFORE UPDATE OR DELETE ON Audit.audit_logs
+FOR EACH ROW EXECUTE FUNCTION raise_exception('Audit logs cannot be modified');
+
+-- ✅ For extra security: Hash chain (you already have this!)
+-- Your code shows:
+-- prev_hash, row_hash columns
+-- This is good, but verify the hash is SHA-256 and chain validation runs
+
+-- ✅ Implement hash verification:
+CREATE OR REPLACE FUNCTION Audit.verify_audit_chain()
+RETURNS TABLE(row_id INT, is_valid BOOLEAN, broken_at_row INT) AS $$
+BEGIN
+    RETURN QUERY
+    WITH chain AS (
+        SELECT 
+            audit_id,
+            row_hash,
+            LAG(row_hash) OVER (ORDER BY audit_id) as expected_prev_hash,
+            prev_hash,
+            audit_id = 1 OR prev_hash = LAG(row_hash) OVER (ORDER BY audit_id) as is_valid
+        FROM Audit.audit_logs
+    )
+    SELECT audit_id::INT, is_valid, 
+           CASE WHEN NOT is_valid THEN audit_id::INT ELSE NULL END
+    FROM chain;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Run periodically:
+-- SELECT * FROM Audit.verify_audit_chain() WHERE NOT is_valid;
+
 SELECT '33 WORM' AS STATUS;

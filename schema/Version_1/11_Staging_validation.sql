@@ -69,7 +69,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'FAIL'
                 , 'UNRESOLVED'
                 , NULL
@@ -85,7 +85,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'PASS'
                 , 'RESOLVED'
                 , NULL
@@ -107,7 +107,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'FAIL'
                 , 'UNRESOLVED'
                 , NULL
@@ -123,7 +123,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'PASS'
                 , 'RESOLVED'
                 , NULL
@@ -145,7 +145,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'FAIL'
                 , 'UNRESOLVED'
                 , NULL
@@ -161,7 +161,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'PASS'
                 , 'RESOLVED'
                 , NULL
@@ -184,7 +184,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'FAIL'
                 , 'UNRESOLVED'
                 , NULL
@@ -201,7 +201,7 @@ BEGIN
                 , r.session_id::INT
                 , r.id::INT
                 , NULL
-                , r.table_name::VARCHAR
+                , r.table_name
                 , 'PASS'
                 , 'RESOLVED'
                 , NULL
