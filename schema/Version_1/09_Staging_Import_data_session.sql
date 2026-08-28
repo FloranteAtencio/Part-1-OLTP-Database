@@ -77,6 +77,48 @@ BEGIN
 END; 
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = Finance, Audit, Compliance, Security, Staging, pg_catalog;
 
+DROP FUNCTION IF EXISTS Staging.ar_product_line(int,TEXT,TEXT,TEXT,TEXT) CASCADE;
+CREATE Function IF NOT EXISTS Staging.ar_product_line(
+    p_session_id INT,
+    p_invoice_code TEXT,
+    p_product_code TEXT,
+    p_quantity TEXT,
+    p_discount TEXT
+)
+RETURNS INT AS $$
+DECLARE 
+    new_ar_staging_id INT
+BEGIN
+    INSERT INTO Staging.ar_product_line(
+        session_id,
+        invoice_code,
+        product_code,
+        quantity,
+        discount,
+        validation_status, 
+        validation_errors, 
+        imported_at
+    )
+    VALUES (
+        p_session_id,
+        p_invoice_code,
+        p_product_code,
+        p_quantity,
+        p_discount, 
+        'DRAFT', 
+        NULL, 
+        NOW()
+    ) RETURNING id INTO new_ar_staging_id;
+
+    INSERT INTO Staging.import_workflows
+    (session_id, staging_record_id, staging_table,previous_state, new_state, changed_by)
+    VALUES(p_session_id, new_ar_staging_id, 'ar_product_line',NULL, 'DRAFT',current_user);
+
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = Finance, Audit, Compliance, Security, Staging, pg_catalog;
+
 COMMIT;
 
 SELECT '09 Staging Schema import data session complete' as Status;
