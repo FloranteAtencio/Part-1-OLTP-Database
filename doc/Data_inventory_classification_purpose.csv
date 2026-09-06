@@ -1,0 +1,127 @@
+Schema	Table	Column	What data is it?	Who/what does it describe?	Business purpose	Sensitivity	Personal	Handling requirements
+Finance	Client 	client_id	Client Identification	Client record	To uniquely Identify and reference the client  within the  system	Confidential	Yes if  individual and  No of org	Access limited to authorized staff;  encrypted at rest;  no export to personal devices;  audit logging on access 
+Finance	Client 	 info 	Client General  Information	Client or Client org	To Identify the customer for business and account purpose	Restricted	Yes	Role-based access only;  encryption at rest and in transit;  no email/IM transmission;  retention policy per org policy;  deletion on request (if GDPR applies) 
+Finance	Client 	created_at	Date and Time  created	Client  or  Client org	To have a recorded time when it created	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates	template_id	Template unique identification	Template Identification	To uniquely Identify and reference the template	Internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates	template_name	Template name	Template name	To Identify the account template	Internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates	Descript	Template Description	Template description	To provide more details 	Internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates	created_at	Date and Time  created	Template created time	To have a recorded time when it created	Internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates_accounts	template_account_id 	Unique Identification	chart of account on assigned to a template  Identification	To uniquely identify and reference chart of account	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates_accounts	template_id	Unique Identification on related table	chart of account on assigned to a template related table  identification	To identify table related	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates_accounts	account_code	Identification code	chart of account on assigned to a template  code	To identify account via code	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates_accounts	account_name	account name	chart of account on assigned to a template  name	To identify account name	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	coa_templates_accounts	account_type	account type	chart of account on assigned to a template  type	To identify account type	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	chart_id	Unique Identification	account uniquely identification	to Uniquely Identify and reference 	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	client_id	Unique Identification on related table	account table related identification	To identify account related table	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	account	account name	account name	To identify account	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	account_code	Identification code	account code	To Identify number	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	type	account type	account type	To identify type	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	is_active	account resuable	account is usable	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	charts	created_at	Date and Time  created	account time created	To have a recorded time when it created	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_roles	role_id	Unique Identification	account role uniquely identification	To Uniquely identify and reference 	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_roles	chart_id	Unique Identification on related table	account role table related identification	To identify related table	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_roles	role_name	role_name	role name	To Identify role name	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_roles	created_at	Date and Time  created	Role time created	To have a recorded time when it created	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	property_id	Unique Identification	account properties uniquely identification	To Uniquely identify and reference 	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	chart_id	Unique Identification on related table	account properties table related identification	To identify related table	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	is_payable	account verification	account properties usability	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	is_debt	account verification	account properties usability	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	is_bank_account	account verification	account properties usability	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	is_credit_card	account verification	account properties usability	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	requieres_reconciliation	account verification	account properties usability	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	account_properties	created_at	Date and Time  created	account properties created	To check if it still usable	internal	No	Access limited to authorized staff; Standard backup/retention; Audit logging on modification 
+Finance	transactions	transaction_id						
+Finance	transactions	description						
+Finance	transactions	idempotency_key						
+Finance	transactions	client_id						
+Finance	transactions	created_at						
+Finance	journal	Journal_id						
+Finance	journal	transaction_id						
+Finance	journal	chart_id						
+Finance	journal	date						
+Finance	journal	journal						
+Finance	journal	amount						
+Finance	customer	customer_id						
+Finance	customer	customer_name						
+Finance	customer	contact_info						
+Finance	customer	email						
+Finance	customer	address						
+Finance	vendor	vendor_id						
+Finance	vendor	vendor_name						
+Finance	vendor	contact_info						
+Finance	vendor	email						
+Finance	vendor	address						
+Finance	product	product_id						
+Finance	product	product_name						
+Finance	product	description						
+Finance	product	product_unit						
+Finance	operation	operation_id						
+Finance	operation	product_id						
+Finance	operation	quantity						
+Finance	operation	product_cost						
+Finance	operation	product_price						
+Finance	operation	product_date						
+Finance	operation	created_at						
+Finance	warehouse	warehouse_id						
+Finance	warehouse	warehouse_name						
+Finance	account_receivables	receivable_id						
+Finance	account_receivables	transaction_id						
+Finance	account_receivables	customer_id						
+Finance	ar_ext	ar_ext_id						
+Finance	ar_ext	amount						
+Finance	ar_ext	due_date						
+Finance	ar_ext	invoice_date						
+Finance	ar_ext	status						
+Finance	ar_ext	receivable_id						
+Finance	account_payables	payable_id						
+Finance	account_payables	transaction_id						
+Finance	account_payables	vendor_id						
+Finance	ap_ext	ap_ext_id						
+Finance	ap_ext	amount						
+Finance	ap_ext	due_date						
+Finance	ap_ext	invoice_date						
+Finance	ap_ext	status						
+Finance	ap_ext	payable_id						
+Finance	inventory_audits	management_id						
+Finance	inventory_audits	product_id						
+Finance	inventory_audits	warehouse_id						
+Finance	inventory_audits	transaction_id						
+Finance	inventory_audits	action_type						
+Finance	inventory_audits	quantity						
+Finance	inventory_audits	movement_date						
+Finance	inventory_audits	created_at						
+Finance	purchase_returns	return_id						
+Finance	purchase_returns	payable_id						
+Finance	purchase_returns	return_amount						
+Finance	purchase_returns	return_date						
+Finance	sales_returns	return_id						
+Finance	sales_returns	receivable_id						
+Finance	sales_returns	return_amount						
+Finance	sales_returns	return_date						
+Finance	inventory_transfers	transfer_id						
+Finance	inventory_transfers	from_location_id						
+Finance	inventory_transfers	to_location_id						
+Finance	inventory_transfers	product_id						
+Finance	inventory_transfers	quantity						
+Finance	inventory_transfers	transfer_date						
+Finance	inventory_transfers	notes						
+Finance	inventory_transfers	event_id						
+Finance	event_log	event_type						
+Finance	event_log	payload						
+Finance	event_log	status						
+Finance	event_log	idempotency_key						
+Finance	event_log	created_at						
+Finance	event_log	process_at						
+Finance	ar_product_line	ar_line_id						
+Finance	ar_product_line	invoice_id						
+Finance	ar_product_line	product_id						
+Finance	ar_product_line	receivable_id						
+Finance	ar_product_line	quantity						
+Finance	ar_product_line	discount						
+Finance	tax_types	tax_type_id						
+Finance	tax_types	client_id						
+Finance	tax_types	chart_id						
+Finance	tax_types	tax_name						
+Finance	tax_types	tax_code						
+Finance	tax_types	tax_rate						
+Finance	tax_types	is_active						
