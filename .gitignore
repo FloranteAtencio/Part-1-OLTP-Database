@@ -2,3 +2,5 @@
 *.log
 backup/
 tmp/
+.env*
+*.env
