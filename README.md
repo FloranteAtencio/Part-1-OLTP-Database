@@ -6,18 +6,12 @@ A modular **Accounting database system** designed to handle inventory, sales, an
 
 ## 🚀 Features
 
-* 📦 **Inventory Management**
-
-  * Tracks stock movement across warehouses
-  * Supports purchases, sales, transfers, and returns
-  * Inventory cost flow (LIFO, FIFO, AVCO)
-
 * 💰 **Accounting System**
 
   * Double-entry bookkeeping (Debit/Credit)
   * Automatic journal entry generation
 
-* 🧾 **Accounts Receivable / Payable**
+* 🧾 **Accounts Receivable**
 
   * Tracks customer balances and supplier obligations
   * Supports payment status and due dates
@@ -27,21 +21,9 @@ A modular **Accounting database system** designed to handle inventory, sales, an
   * Multiple Clients can simultaneously operate 
   * Multiple Chart of account custom made for every Clients needs
 
-
-* ⚙️ **Stored Procedures (PL/pgSQL)**
-
-  * Centralized transaction processing
-  * Modular design (Inventory + Accounting modules)
-
 * 🧩 **Partitioned Tables**
 
   * Scalable handling of financial data using date-based partitioning
-
-* 📊 **Reporting & Dashboard Queries**
-
-  * Inventory levels
-  * Revenue and profit
-  * Aging reports (AR/AP)
 
 * 🫆 **Audit Logs / Extended Audit Logs**
 
